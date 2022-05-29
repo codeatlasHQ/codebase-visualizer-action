@@ -22,11 +22,11 @@ runs:
       uses: docker://ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
       with:
         args: 
-          - tessellate-from-path
-          - --repo_path
-          - $GITHUB_WORKSPACE/${{ inputs.sub_directory }}
-          - --output_path
-          - ${{ inputs.output_path }}
+          - 'tessellate-from-path'
+          - '--repo_path'
+          - '$GITHUB_WORKSPACE/${{ inputs.sub_directory }}'
+          - '--output_path'
+          - '${{ inputs.output_path }}'
     - run: git add ${{ inputs.output_path }}/${{ inputs.output_json_filename }}
       shell: bash
     - run: git commit -m "Codeatlas visualisation - $GITHUB_SHA"
