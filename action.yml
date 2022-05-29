@@ -1,0 +1,36 @@
+# action.yml
+name: 'Codeatlas - Codebase Visualisation'
+description: ''
+inputs:
+  sub_directory:
+    description: 'Sub-directory to start visualisation from.'
+    required: false
+    default: ''
+  output_path:
+    required: false
+    default: '.codeatlas'
+  output_json_filename:
+    required: false
+    default: 'codeatlas_cells.json'
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - run: git branch codeatlas
+      shell: bash
+    - name: 'Codeatlas - Codebase Visualisation'
+      uses: docker://ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
+      with:
+        args: 
+          - tessellate-from-path
+          - --repo_path
+          - $GITHUB_WORKSPACE/${{ inputs.sub_directory }}
+          - --output_path
+          - ${{ inputs.output_path }}
+    - run: git add ${{ inputs.output_path }}/${{ inputs.output_json_filename }}
+      shell: bash
+    - run: git commit -m "Codeatlas visualisation - $GITHUB_SHA"
+      shell: bash
+    - run: git push
+      shell: bash
+
