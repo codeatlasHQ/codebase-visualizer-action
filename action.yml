@@ -25,9 +25,8 @@ runs:
       run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
     
     - name: 'Codeatlas - Codebase Visualisation'
-      uses: docker://ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
-      with:
-        args: 'tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path ${{ inputs.output_path }}'
+      shell: bash
+      run: docker run docker://ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path ${{ inputs.output_path }}
 
     - run: git add ${{ inputs.output_path }}/${{ inputs.output_json_filename }}
       shell: bash
