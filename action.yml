@@ -2,6 +2,10 @@
 name: 'Codeatlas - Codebase Visualisation'
 description: ''
 inputs:
+  username:
+    required: true
+  password: 
+    required:
   sub_directory:
     description: 'Sub-directory to start visualisation from.'
     required: false
@@ -24,8 +28,8 @@ runs:
       uses: docker/login-action@v2
       with:
         registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
 
     - name: 'Codeatlas - Codebase Visualisation'
       uses: docker://ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
@@ -37,7 +41,7 @@ runs:
 
     - run: git commit -m "Codeatlas visualisation - $GITHUB_SHA"
       shell: bash
-      
+
     - run: git push
       shell: bash
 
