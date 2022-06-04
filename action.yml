@@ -32,8 +32,8 @@ runs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: pull
-      run: |
-        docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
+      shell: bash
+      run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
     
     - name: 'Codeatlas - Codebase Visualisation'
       uses: docker://ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
