@@ -41,8 +41,11 @@ runs:
       with:
         # The arguments for the `git add` command (see the paragraph below for more info)
         # Default: '.'
-        add: '$GITHUB_WORKSPACE/${{ inputs.output_path }}/${{ inputs.output_json_filename }}'
-    # The name of the user that will be displayed as the author of the commit.
+        add: './${{ inputs.output_path }}/${{ inputs.output_json_filename }}'
+
+        default_author: codeatlas-bot
+
+        # The name of the user that will be displayed as the author of the commit.
         # Default: depends on the default_author input
         author_name: codeatlas-bot
 
