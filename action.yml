@@ -45,6 +45,6 @@ runs:
 
         push: true
 
-        pull: '--rebase'
+        pull: '--rebase --autostash'
 
 
