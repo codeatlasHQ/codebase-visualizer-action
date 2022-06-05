@@ -41,7 +41,7 @@ runs:
       with:
         # The arguments for the `git add` command (see the paragraph below for more info)
         # Default: '.'
-        add: './${{ inputs.output_path }}/${{ inputs.output_json_filename }}'
+        add: "./${{ inputs.output_path }}/"
 
         # The name of the user that will be displayed as the author of the commit.
         # Default: depends on the default_author input
