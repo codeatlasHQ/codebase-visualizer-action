@@ -45,6 +45,6 @@ runs:
 
         push: true
 
-        pull: '--rebase --autostash'
+        pull: '--rebase --autostash $GITHUB_REF'
 
 
