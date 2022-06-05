@@ -41,10 +41,7 @@ runs:
 
         # If this input is set, the action will push the commit to a new branch with this name.
         # Default: ''
-        new_branch: codeatlas
+        new_branch: "codeatlas-$GITHUB_SHA"
 
         push: true
-
-        pull: '--rebase --autostash $GITHUB_REF'
-
 
