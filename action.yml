@@ -24,6 +24,18 @@ runs:
       shell: bash
       run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
     
+    - name: print pwd
+      shell: bash
+      run: pwd
+
+    - name: ls pwd
+      shell: bash
+      run: ls
+
+    - name: list workspace
+      shell: bash
+      run: ls /home/runner/work/flask/flask
+
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
       run: docker run ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path ${{ inputs.output_path }}
