@@ -38,9 +38,9 @@ runs:
 
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
-      run: docker run -w="$GITHUB_WORKSPACE" --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2 tessellate-from-path --repo_path ./${{ inputs.sub_directory }} --output_path ./${{ inputs.output_path }}
+      run: docker run --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path $GITHUB_WORKSPACE/${{ inputs.output_path }}
 
-    - run: git add ./${{ inputs.output_path }}/${{ inputs.output_json_filename }}
+    - run: git add $GITHUB_WORKSPACE/${{ inputs.output_path }}/${{ inputs.output_json_filename }}
       shell: bash
 
     - run: git commit -m "Codeatlas visualisation - $GITHUB_SHA"
