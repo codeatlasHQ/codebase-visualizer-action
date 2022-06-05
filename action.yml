@@ -20,18 +20,6 @@ runs:
     - name: pull
       shell: bash
       run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
-    
-    - name: print pwd
-      shell: bash
-      run: pwd
-
-    - name: ls pwd
-      shell: bash
-      run: ls
-
-    - name: list workspace
-      shell: bash
-      run: ls /home/runner/work/flask/flask
 
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
@@ -56,5 +44,7 @@ runs:
         new_branch: codeatlas
 
         push: true
+
+        pull: '--rebase --autostash ...'
 
 
