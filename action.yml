@@ -43,8 +43,6 @@ runs:
         # Default: '.'
         add: './${{ inputs.output_path }}/${{ inputs.output_json_filename }}'
 
-        default_author: codeatlas-bot
-
         # The name of the user that will be displayed as the author of the commit.
         # Default: depends on the default_author input
         author_name: codeatlas-bot
