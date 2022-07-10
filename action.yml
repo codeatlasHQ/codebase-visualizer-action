@@ -19,11 +19,11 @@ runs:
 
     - name: pull
       shell: bash
-      run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2
+      run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.3
 
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
-      run: docker run --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.2 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path $GITHUB_WORKSPACE/${{ inputs.output_path }}
+      run: docker run --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.0-rc.3 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path $GITHUB_WORKSPACE/${{ inputs.output_path }} --repo_owner $GITHUB_REPOSITORY_OWNER	
 
     - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
       with:
@@ -41,7 +41,7 @@ runs:
 
         # If this input is set, the action will push the commit to a new branch with this name.
         # Default: ''
-        new_branch: "codeatlas-$GITHUB_SHA"
+        new_branch: "codeatlas-${{GITHUB_SHA}}"
 
         push: true
 
