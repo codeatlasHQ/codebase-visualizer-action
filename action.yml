@@ -30,6 +30,7 @@ runs:
         add-paths: "${{ inputs.output_path }}/"
         commit-message: "Codeatlas: Visualize repo at commit ${{ github.sha }}."
         committer: "codeatlas-bot <hello@codeatlas.dev>"
+        author: "codeatlas-bot <hello@codeatlas.dev>"
         branch: "codeatlas-bot-branch"
         delete-branch: true
         title: "Codeatlas: Update repo visualisation."
