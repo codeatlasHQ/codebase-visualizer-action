@@ -41,7 +41,7 @@ runs:
 
         # If this input is set, the action will push the commit to a new branch with this name.
         # Default: ''
-        new_branch: "codeatlas-${{GITHUB_SHA}}"
+        new_branch: "codeatlas-${{ github.sha }}"
 
         push: true
 
