@@ -28,7 +28,7 @@ runs:
     - uses: peter-evans/create-pull-request@v4
       with: 
         add-paths: "${{ inputs.output_path }}/"
-        commit-message: "Codeatlas: Visualize repo at commit ${{ github.sha }}."
+        commit-message: "codeatlas: Visualize repo at commit ${{ github.sha }}"
         committer: "codeatlas-bot <hello@codeatlas.dev>"
         author: "codeatlas-bot <hello@codeatlas.dev>"
         branch: "codeatlas-bot-branch"
