@@ -2,7 +2,7 @@
 
 > Codeatlas visualizes codebases.
 
---> TODO: Add picture of the dashboard
+![Codebase visualization for k8s](images/codeatlas-kubernetes-diagram.png)
 
 The codebase-visualizer-action creates a visualization of your codebase and makes it available at `https://codeatlas.dev/github/<REPO_OWNER>/<REPO_NAME>/<?COMMIT_OR_BRANCH>`. 
 
@@ -23,10 +23,10 @@ steps:
 
 The action will then run the main Codeatlas Docker image (maintained in the [codebase-tessellator](https://github.com/codeatlasHQ/codebase-tessellator) project) to create a snapshot of the repo.
 
-Upon a successful run, `codeatlas-bot` will create a branch named `codeatlas-preview` and add the data necessary for the visualization to the `.codeatlas` directory. It will then raise a PR to add this visualization snapshot to your default branch. The bot will keep updating and overwriting the same PR everytime the action runs. After merging this PR, the interactive visualization will become available at `https://codeatlas.dev/github/<REPO_OWNER>/<REPO_NAME>/<?COMMIT_OR_BRANCH>`.
+Upon a successful run, `codeatlas-bot` will create a branch named `codeatlas-preview` and add the data necessary for the visualization to the `.codeatlas` directory. It will then raise a PR to add this visualization snapshot data to your default branch. The bot will keep updating and overwriting the same PR everytime the action runs. After merging this PR, the interactive visualization will become available at `https://codeatlas.dev/github/<REPO_OWNER>/<REPO_NAME>/<?COMMIT_OR_BRANCH>`.
 
 How often to trigger: 
-We've found it overkill to visualize the project with every push-event, so we recommend using:
+We've found it overkill to visualize the project with every push-event, so to be mindful of CI minute usage, we'd recommend using either:
 1) the `on: [tag]` workflow trigger to update the visualization on each release or
 2) the `on: [workflow_dispatch]` trigger to run the action manually and update the visualization whenever you want.
 
