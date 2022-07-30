@@ -6,7 +6,7 @@
 
 The codebase-visualizer-action creates a visualization of your codebase and makes it available at `https://codeatlas.dev/github/<REPO_OWNER>/<REPO_NAME>/<?COMMIT_OR_BRANCH>`. 
 
-Explore sample visualizations of well-known open-source projects in our [gallery](codeatlas.dev/gallery)!
+Explore sample visualizations of well-known open-source projects in our [gallery](https://codeatlas.dev/gallery)!
 
 ## Usage
 In order to use this action, `Settings - Actions - General - Allow GitHub Actions to create and approve pull requests` needs to be activated! If your repo is part of a GitHub organisation, you need to enable this setting in the organisation settings first.
