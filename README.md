@@ -8,10 +8,13 @@ The codebase-visualizer-action creates a visualization of your codebase and make
 
 Explore sample visualizations of well-known open-source projects in our [gallery](https://codeatlas.dev/gallery)!
 
+>**Note**: The codebase-visualizer-action is **currently in beta**. If visualisation for your repo fails for some reason, please consider opening an issue with a link to your workflow run so we can fix the problem!
 ## Usage
-In order to use this action, `Settings - Actions - General - Allow GitHub Actions to create and approve pull requests` needs to be activated! If your repo is part of a GitHub organisation, you need to enable this setting in the organisation settings first.
+To add Codeatlas to your Actions pipeline, specify the name of this repo with a tag (currently only @v1-beta is available) as a step in the `workflow.yml` file. 
 
-To add Codeatlas into an existing Actions pipeline, add this repository as a step within your workflow.yml file like this:
+`Settings - Actions - General - Allow GitHub Actions to create and approve pull requests` needs to be activated! If your repo is part of a GitHub organisation, this needs to be enabled in the organisation settings.
+
+Add to `workflow.yml` like this:
 
 ```
 steps:
@@ -21,16 +24,19 @@ steps:
   	  sub_directory: src/example/  # optional
 ```
 
+>**Note**: Don't forget to add the `actions/checkout@v3` action step to checkout your repo on the Github Action runner before!
+
 The action will then run the main Codeatlas Docker image (maintained in the [codebase-tessellator](https://github.com/codeatlasHQ/codebase-tessellator) project) to create a snapshot of the repo.
 
 Upon a successful run, `codeatlas-bot` will create a branch named `codeatlas-preview` and add the data necessary for the visualization to the `.codeatlas` directory. It will then raise a PR to add this visualization snapshot data to your default branch. The bot will keep updating and overwriting the same PR everytime the action runs. After merging this PR, the interactive visualization will become available at `https://codeatlas.dev/github/<REPO_OWNER>/<REPO_NAME>/<?COMMIT_OR_BRANCH>`.
 
-How often to trigger: 
-We've found it overkill to visualize the project with every push-event, so to be mindful of CI minute usage, we'd recommend using either:
+**How often to trigger?**
+
+In our experience it's overkill to visualize a project with every push-event. In order to be mindful of CI minutes, we'd recommend using either:
 1) the `on: [tag]` workflow trigger to update the visualization on each release or
 2) the `on: [workflow_dispatch]` trigger to run the action manually and update the visualization whenever you want.
 
-See [this repo](https://github.com/codeatlasHQ/codebase-tessellator) for a working setup.
+See [this repo](https://github.com/codeatlasHQ/flask) for a working setup.
 
 ## Private Repositories
 This action does not yet support private repositories! The action should run through, but you will not be able to access your visualizations through codeatlas.dev.
