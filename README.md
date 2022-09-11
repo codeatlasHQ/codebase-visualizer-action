@@ -8,13 +8,13 @@ The codebase-visualizer-action creates a visualization of your codebase and make
 
 Explore sample visualizations of well-known open-source projects in our [gallery](https://codeatlas.dev/gallery)!
 
->**Note**: The codebase-visualizer-action is **currently in beta**. If visualisation for your repo fails for some reason, please consider opening an issue with a link to your workflow run so we can fix the problem!
+>**Note**: The codebase-visualizer-action is **currently in beta**. If visualization for your repo fails for some reason, please consider opening an issue with a link to your workflow run so we can fix the problem!
 ## Usage
-To add Codeatlas to your Actions pipeline, specify the name of this repo with a tag (currently only @v1-beta is available) as a step in the `workflow.yml` file. 
+To add Codeatlas to your Actions pipeline, specify the name of this repo with a tag (currently only `@v1-beta` is available) as a step in the `workflow.yml` file. 
 
 `Settings - Actions - General - Allow GitHub Actions to create and approve pull requests` needs to be activated! If your repo is part of a GitHub organisation, this needs to be enabled in the organisation settings.
 
-Also note that at the moment this action assumes your Github runner's UID/GID pairing to be 1001:121 (the standard Github config). Self-hosted runners might not work for that reason! 
+Also note that at the moment this action assumes your GitHub runner's UID/GID pairing to be `1001:121` (the standard GitHub config). Self-hosted runners might not work for that reason! 
 
 Add to `workflow.yml` like this:
 
@@ -26,7 +26,7 @@ steps:
   	  sub_directory: src/example/  # optional
 ```
 
->**Note**: Don't forget to add the `actions/checkout@v3` action step to checkout your repo on the Github Action runner before!
+>**Note**: Don't forget to add the `actions/checkout@v3` action step to checkout your repo on the GitHub Action runner before!
 
 The action will then run the main Codeatlas Docker image (maintained in the [codebase-tessellator](https://github.com/codeatlasHQ/codebase-tessellator) project) to create a snapshot of the repo.
 
@@ -47,8 +47,22 @@ This action does not yet support private repositories! The action should run thr
 
 | Input | Description | Default |
 | :---:     |     :---:   |    :---:   |
-| `sub_directory` | (Optional) Specify the root directory of your codebase. No leading slash allowed. | "" |
+| `sub_directory` | (Optional) Specify the root directory of your codebase. No leading slash allowed. | `""` |
 
 ## Roadmap
-Check out our roadmap on Trello: https://trello.com/b/jg1kn5c2/codeatlas-roadmap
+Up next:
+- [x] Heatmap overlay
+- [x] Color legend for heatmap
+- [x] Programming language overlay
+- [x] Fixes to make mobile usable
+- [ ] Support for private repositories
+- [ ] Upload visualization results to codeatlas hosted storage instead of storing in git repo
+
+Longer term:
+- [ ] Functions and variables as atomic units instead of files
+- [ ] Test coverage overlay (Possible codecov.io integration?)
+- [ ] Dead code overlay
+- [ ] Support for viewing READMEs and Docstrings in frontend
+- [ ] Annotations for the graph
+- [ ] Slideshow through the graph
 
