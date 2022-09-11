@@ -11,11 +11,19 @@ runs:
   steps:
     - name: pull
       shell: bash
-      run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.1
+      run: docker pull ghcr.io/codeatlashq/codebase-tessellator:0.1.2-rc.1
+
+    - name: debug
+      shell: bash
+      run: ls -la $GITHUB_WORKSPACE
 
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
-      run: docker run --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.1 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path $GITHUB_WORKSPACE/.codeatlas --repo_owner $GITHUB_REPOSITORY_OWNER
+      run: docker run --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.2-rc.1 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path $GITHUB_WORKSPACE/.codeatlas --repo_owner $GITHUB_REPOSITORY_OWNER
+
+    - name: debug2
+      shell: bash
+      run: ls -la $GITHUB_WORKSPACE/.codeatlas/
 
     - uses: peter-evans/create-pull-request@v4
       with: 
