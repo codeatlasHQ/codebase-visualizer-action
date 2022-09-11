@@ -1,5 +1,5 @@
 # action.yml
-name: 'Codeatlas - Codebase Visualisation'
+name: 'Codeatlas - Codebase Visualization'
 description: "Visualize your codebase during CI."
 inputs:
   sub_directory:
