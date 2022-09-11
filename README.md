@@ -14,6 +14,8 @@ To add Codeatlas to your Actions pipeline, specify the name of this repo with a 
 
 `Settings - Actions - General - Allow GitHub Actions to create and approve pull requests` needs to be activated! If your repo is part of a GitHub organisation, this needs to be enabled in the organisation settings.
 
+Also note that at the moment this action assumes your Github runner's UID/GID pairing to be 1001:121 (the standard Github config). Self-hosted runners might not work for that reason! 
+
 Add to `workflow.yml` like this:
 
 ```
