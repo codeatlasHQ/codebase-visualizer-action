@@ -19,7 +19,7 @@ runs:
 
     - name: debug2
       shell: bash
-      run: id username
+      run: id runner
 
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
