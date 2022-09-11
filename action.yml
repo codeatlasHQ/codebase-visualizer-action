@@ -15,11 +15,15 @@ runs:
 
     - name: debug
       shell: bash
-      run: ls -la $GITHUB_WORKSPACE
+      run: chown 1000:1000 $GITHUB_WORKSPACE
 
     - name: 'Codeatlas - Codebase Visualisation'
       shell: bash
       run: docker run --mount type=bind,source="$GITHUB_WORKSPACE",target=$GITHUB_WORKSPACE ghcr.io/codeatlashq/codebase-tessellator:0.1.2-rc.1 tessellate-from-path --repo_path $GITHUB_WORKSPACE/${{ inputs.sub_directory }} --output_path $GITHUB_WORKSPACE/.codeatlas --repo_owner $GITHUB_REPOSITORY_OWNER
+
+    - name: debug
+      shell: bash
+      run: chown 1001:121 $GITHUB_WORKSPACE 
 
     - name: debug2
       shell: bash
