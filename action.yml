@@ -1,7 +1,6 @@
 # action.yml
 name: 'Codeatlas - Codebase Visualisation'
-description: ''
-inputs:
+description: "The Codeatlas codebase-visualizer action computes what's necessary to visualize codebases through https://codeatlas.dev and automatically adds this data to your repo by raising PRs."inputs:
   sub_directory:
     description: 'Sub-directory to start visualisation from.'
     required: false
